@@ -1,0 +1,118 @@
+body {
+    font-size: 16px;
+    line-height: 24px;
+}
+.dots, .box {
+    float: right;
+}
+
+.dots:before {
+    content: "\25CB\25CB\25CB\25CB\25CB"
+}
+
+.dots.one:before {
+    content: "\25CF\25CB\25CB\25CB\25CB"
+}
+
+.dots.two:before {
+    content: "\25CF\25CF\25CB\25CB\25CB"
+}
+
+.dots.three:before {
+    content: "\25CF\25CF\25CF\25CB\25CB"
+}
+
+.dots.four:before {
+    content: "\25CF\25CF\25CF\25CF\25CB"
+}
+
+.dots.five:before {
+    content: "\25CF\25CF\25CF\25CF\25CF"
+}
+
+.box:before {
+    content: "\25A1";
+}
+
+.tendots,
+.tenboxes,
+.dots,
+.box {
+    margin-top: -2px;
+    font-size: 34px;
+}
+
+.box,
+.tenboxes {
+    margin-top: -5px;
+}
+
+.tendots:before {
+    content: "\25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB"
+}
+
+.tendots.one:before {
+    content: "\25CF   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB"
+}
+
+.tendots.two:before {
+    content: "\25CF   \25CF   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB"
+}
+
+.tendots.three:before {
+    content: "\25CF   \25CF   \25CF   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB"
+}
+
+.tendots.four:before {
+    content: "\25CF   \25CF   \25CF   \25CF   \25CB   \25CB   \25CB   \25CB   \25CB   \25CB"
+}
+
+.tendots.five:before {
+    content: "\25CF   \25CF   \25CF   \25CF   \25CF   \25CB   \25CB   \25CB   \25CB   \25CB"
+}
+
+.tendots.six:before {
+    content: "\25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CB   \25CB   \25CB   \25CB"
+}
+
+.tendots.seven:before {
+    content: "\25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CB   \25CB   \25CB"
+}
+
+.tendots.eight:before {
+    content: "\25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CB   \25CB"
+}
+
+.tendots.nine:before {
+    content: "\25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CB"
+}
+
+.tendots.ten:before {
+    content: "\25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF   \25CF"
+}
+
+.tenboxes:before {
+    content: "\25A1   \25A1   \25A1   \25A1   \25A1   \25A1   \25A1   \25A1   \25A1   \25A1"
+}
+
+.health-level {
+    display: inline-block;
+    width: 140px;
+}
+
+.clickable {
+    cursor: pointer;
+}
+
+input.invisible-input,
+select.invisible-input {
+    border-image-width: 0;
+    border: 0;
+    -webkit-appearance: none;
+    font-size: 16px;
+    height: 26px;
+    line-height: 24px;
+    margin: -4px 0 0;
+    padding: 0;
+    width: 200px;
+}

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="interactive">
+<head>
+    <meta charset="utf-8" />
+    <title>Orpheus Character Sheet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="css/bootstrap.css" media="all" rel="stylesheet" />
+    <link href="css/character.css" media="all" rel="stylesheet" />
+    <script src="http://code.angularjs.org/1.0.6/angular.min.js"></script>
+    <script src="js/interactive.js"></script>
+    <script type="text/ng-template" id="category">
+        <h2 class="text-center">{{title}}</h2>
+        <div ng-repeat="key in keys">
+            <div class="clearfix" ng-controller="MyCtrl">
+                {{key}} <span class="dots clickable {{class}}" ng-click="action()"></span>
+            </div>
+        </div>
+    </script>
+    <script type="text/ng-template" id="category-nodots">
+        <h2 class="text-center">{{title}}</h2>
+        <div ng-repeat="key in keys">
+            <div>{{key}}</div>
+        </div>
+    </script>
+</head>
+<body style="padding-top:5px;" ng-controller="GlobalController">
+<!-- &#9679; &#9675; -->
+<div class="container">
+    <div class="row">
+        <div class="span4">
+            <div class="clearfix">Name: <input class="invisible-input"/></div>
+            <div class="clearfix">Player: <input class="invisible-input"/></div>
+        </div>
+        <div class="span4">
+            <div class="clearfix"><span>Nature:</span> <select class="invisible-input" ng-model="nature" ng-options="nature for nature in natures | orderBy: 'toString()'"></select></div>
+            <div class="clearfix">Demeanor: <select class="invisible-input" ng-model="demeanor" ng-options="demeanor for demeanor in natures | orderBy: 'toString()'"></select></div>
+        </div>
+        <div class="span4">
+            <div class="clearfix">Shade: <select class="invisible-input" ng-model="shade" ng-options="shade for shade in shades | orderBy: 'toString()'"></select></div>
+            <div class="clearfix">Lament: <select class="invisible-input" ng-model="lament" ng-options="lament for lament in laments | orderBy: 'toString()'"></select></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <h1 class="text-center">Attributes</h1>
+        </div>
+        <div class="span4" ng-controller="CategoryController" ng-init="init('Physical', ['Strength', 'Dexterity', 'Stamina'], 1, 5)">
+            <div ng-include="'category'"></div>
+        </div>
+        <div class="span4" ng-controller="CategoryController" ng-init="init('Social', ['Charisma', 'Manipulation', 'Appearance'], 1, 5)">
+            <div ng-include="'category'"></div>
+        </div>
+        <div class="span4" ng-controller="CategoryController" ng-init="init('Mental', ['Perception', 'Intelligence', 'Wits'], 1, 5)">
+            <div ng-include="'category'"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <h1 class="text-center">Abilities</h1>
+        </div>
+        <div class="span4" ng-controller="CategoryController" ng-init="init('Talents', ['Alertness', 'Athletics', 'Awareness', 'Brawl', 'Empathy', 'Expression', 'Intimidation', 'Intrigue', 'Intuition', 'Leadership', 'Streetwise', 'Subterfuge'], 0, 5)">
+            <div ng-include="'category'"></div>
+        </div>
+        <div class="span4" ng-controller="CategoryController" ng-init="init('Skills', ['Animal Ken', 'Crafts', 'Drive', 'Etiquette', 'Firearms', 'Meditation', 'Melee', 'Performance', 'Security', 'Stealth', 'Survivale', 'Technology'], 0, 5)">
+            <div ng-include="'category'"></div>
+        </div>
+        <div class="span4" ng-controller="CategoryController" ng-init="init('Knowledges', ['Academics', 'Bureaucracy', 'Computer', 'Enigmas', 'Finance', 'Investigation', 'Law', 'Linguistics', 'Medicine', 'Occult', 'Politics', 'Science'], 0, 5)">
+            <div ng-include="'category'"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <h1 class="text-center">Advantages</h1>
+        </div>
+        <div class="span4" ng-controller="CategoryController" ng-init="init('Backgrounds', ['_____________________', '_____________________', '_____________________', '_____________________', '_____________________', '_____________________'], 0, 5)">
+            <div ng-include="'category'"></div>
+        </div>
+        <div class="span4" ng-controller="CategoryController" ng-init="init('Horrors', ['__________________________________', '__________________________________', '__________________________________', '__________________________________', '__________________________________', '__________________________________'])">
+            <div ng-include="'category-nodots'"></div>
+        </div>
+        <div class="span4" ng-controller="CategoryController" ng-init="init('Stains', ['__________________________________', '__________________________________', '__________________________________', '__________________________________', '__________________________________', '__________________________________'])">
+            <div ng-include="'category-nodots'"></div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="span4 offset4">
+            <h2 class="text-center">Vitality</h2>
+            <div class="clearfix" ng-controller="MyCtrl" ng-init="init(0, 10)"><span class="tendots clickable {{class}}" ng-click="action()"></span></div>
+            <div class="clearfix"><span class="tenboxes"></span></div>
+            <h2 class="text-center">Willpower</h2>
+            <div class="clearfix" ng-controller="MyCtrl" ng-init="init(0, 10)"><span class="tendots clickable {{class}}" ng-click="action()"></span></div>
+            <div class="clearfix"><span class="tenboxes"></span></div>
+            <h2 class="text-center">Spite</h2>
+            <div class="clearfix" ng-controller="MyCtrl" ng-init="init(0, 10)"><span class="tendots clickable {{class}}" ng-click="action()"></span></div>
+            <div class="clearfix"><span class="tenboxes"></span></div>
+        </div>
+        <div class="span4">
+            <div class="row">
+                <div class="span3 offset1">
+                    <h2 class="text-center">Health</h2>
+                    <div class="clearfix"><span class="health-level">Bruised</span> <span class="box" ></span></div>
+                    <div class="clearfix"><span class="health-level">Hurt</span> -1 <span class="box" ></span></div>
+                    <div class="clearfix"><span class="health-level">Injured</span> -1 <span class="box" ></span></div>
+                    <div class="clearfix"><span class="health-level">Wounded</span> -2 <span class="box" ></span></div>
+                    <div class="clearfix"><span class="health-level">Mauled</span> -2 <span class="box" ></span></div>
+                    <div class="clearfix"><span class="health-level">Crippled</span> -5 <span class="box" ></span></div>
+                    <div class="clearfix"><span class="health-level">Incapacitated</span> <span class="box" ></span></div>
+                </div>
+            </div>
+            <h2 class="text-center">Experience</h2>
+            <div class="clearfix">__________________________________</div>
+        </div>
+    </div>
+</div>
+<script src="http://code.jquery.com/jquery-2.0.3.js"></script>
+<script src="http://netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+</body>
+</html>
